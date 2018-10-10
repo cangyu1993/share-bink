@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
-
+import './index.scss'
 
 export default class secondPage extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            size: 'large',
-        };
+        this.state = {};
     }
 
     render() {
-        const size = this.state.size;
         return (
-            <div>
+            <div className='home'>
                 <h1>我是第二页</h1>
             </div>
         )

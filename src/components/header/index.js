@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './index.scss'
 import {Link} from 'react-router-dom'
-import { Breadcrumb } from 'element-react';
-
+import {Breadcrumb} from 'element-react';
+import {Icon} from 'antd';
 import until from '../../until'
 import axios from 'axios'
 
@@ -12,22 +12,24 @@ export default class Header extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            time:'2018-08-01 23:30:47',
-            weather:'天气晴朗'
+            time: '2018-08-01 23:30:47',
+            weather: '天气晴朗'
         };
     }
-    getTime(){
-        setInterval(()=>{
+
+    getTime() {
+        setInterval(() => {
             let unixdate = new Date().getTime()
 
             let timeStr = formdate(unixdate)
-             this.setState({
-                 time:timeStr
-             })
-        },1000)
+            this.setState({
+                time: timeStr
+            })
+        }, 1000)
     }
-    getWeather(){
-        axios.get('http://t.weather.sojson.com/api/weather/city/101010100').then(res=>{
+
+    getWeather() {
+        axios.get('http://t.weather.sojson.com/api/weather/city/101010100').then(res => {
             console.log(res)
             let weatherMsg = res.data.data.forecast[0]
             let minT = weatherMsg.low
@@ -38,16 +40,18 @@ export default class Header extends Component {
             let weatherStr = `${minT}~${maxT} ${fx} ${f1} ${type}`
             console.log(weatherStr)
             this.setState({
-                weather : weatherStr
+                weather: weatherStr
             })
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err)
         })
     }
-    componentWillMount(){
+
+    componentWillMount() {
         this.getTime()
         this.getWeather()
     }
+
     render() {
         return (
             <div className='header-wrap'>
@@ -56,6 +60,11 @@ export default class Header extends Component {
                         欢迎：<span className="username">大魔王</span>
                     </div>
                     <div className='loginOut'>
+                        <Icon type="user" theme="outlined" className="icon"
+                              onClick={()=>{
+                                  this.props.handleClick()
+                              }}
+                        />
                         <Link to='/login' className="outClick" replace>
                             退出
                         </Link>

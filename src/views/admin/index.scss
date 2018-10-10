@@ -5,3 +5,21 @@
     background-color: #fff;
   }
 }
+
+.inputTo{
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-sizing: border-box;
+  .inputMsg{
+    font-size: 20px;
+    padding: 10px 0;
+    margin-left: 60px;
+    height: 20px;
+    line-height: 20px;
+  }
+  .setWidth{
+    width: 400px;
+    margin-top: 5px;
+  }
+}

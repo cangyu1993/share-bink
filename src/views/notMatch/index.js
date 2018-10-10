@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-
+import './index.scss'
 export default class notMatch extends Component {
     constructor(props) {
         super(props)
@@ -9,8 +9,8 @@ export default class notMatch extends Component {
 
     render() {
         return (
-            <div>
-                <h1>404没有找到你要的页面</h1>
+            <div >
+                <h1 className="404">404没有找到你要的页面</h1>
             </div>
         )
     }
