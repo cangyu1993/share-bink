@@ -4,7 +4,7 @@ import {Layout} from "element-react";
 import Header from '../../components/header'
 import NavLeft from '../../components/navLeft'
 import Footer from '../../components/footer'
-
+import './index.scss'
 export default class Admin extends Component {
     constructor(props) {
         super(props)
@@ -21,7 +21,9 @@ export default class Admin extends Component {
                     <Layout.Col span="20">
                         <Header/>
                         <div className='content-wrap'>
-                            {this.props.children}
+                            <div className="content">
+                                {this.props.children}
+                            </div>
                         </div>
                         <Footer/>
                     </Layout.Col>

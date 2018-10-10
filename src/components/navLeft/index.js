@@ -18,7 +18,7 @@ export default class NavLeft extends Component {
                       >
                     <Menu.SubMenu index="1" title={<span><i className="el-icon-menu"></i>导航一</span>}>
                         <Menu.ItemGroup title="分组一">
-                            <Menu.Item index="1-1" > <Link to='/admin/home' className='secondTitle'>
+                            <Menu.Item index="1-1" > <Link to='/admin/home' replace className='secondTitle'>
                                 首页
                             </Link>
                             </Menu.Item>
@@ -27,7 +27,7 @@ export default class NavLeft extends Component {
 
                     <Menu.SubMenu index="2" title={<span><i className="el-icon-menu"></i>导航二</span>}>
                         <Menu.ItemGroup title="分组一">
-                            <Menu.Item index="2-1" > <Link to='/admin/secondPage' className='secondTitle'>
+                            <Menu.Item index="2-1" > <Link to='/admin/secondPage' replace className='secondTitle'>
                                 第二页
                             </Link>
                             </Menu.Item>

@@ -2,7 +2,7 @@
   .user-info{
     display: flex;
     justify-content: flex-end;
-    border-bottom: 3px solid orange;
+    border-bottom: 2px solid orange;
     height: 60px;
     .user-detail{
       padding-right: 20px;
@@ -19,6 +19,41 @@
         line-height: 60px;
         color: red;
         text-decoration: none;
+      }
+    }
+  }
+  .weather-wrap{
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    .breadcrumb{
+      .breadcrumb-item{
+        line-height: 60px;
+        font-size: 18px;
+        color: #505050;
+        position: relative;
+        &::after{
+          content: '';
+          position: absolute;
+          left: 50%;
+          bottom: -24px;
+          transform: translateX(-50%);
+          border: 12px solid transparent;
+          border-top: 12px solid #ffffff;
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+    .weather{
+      display: flex;
+      line-height: 60px;
+      .dateNow{
+        margin-right: 20px;
+      }
+      .weather-detail{
+        font-weight: bold;
       }
     }
   }

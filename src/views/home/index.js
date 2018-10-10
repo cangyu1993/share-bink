@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-
+import './index.scss'
 export default class Home extends Component {
     constructor(props) {
         super(props)
@@ -9,7 +9,7 @@ export default class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className='home'>
                 我是主页
             </div>
         )

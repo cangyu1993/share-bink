@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './index.scss'
 
 export default class Footer extends Component {
     constructor(props) {
@@ -9,8 +9,8 @@ export default class Footer extends Component {
 
     render() {
         return (
-            <div>
-                <h1>我是footer组件</h1>
+            <div className="footer">
+                版权所有：Cangyu1993（推荐使用谷歌浏览器，可以获得更佳操作页面体验） 技术支持：cangyu1993Git
             </div>
         )
     }
