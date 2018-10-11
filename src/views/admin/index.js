@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Layout, Dialog, Button, Input} from "element-react";
 
+import axios from 'axios'
+
 import Header from '../../components/header'
 import NavLeft from '../../components/navLeft'
 import Footer from '../../components/footer'
@@ -10,15 +12,42 @@ export default class Admin extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isShow: false
+            isShow: false,
+            userDate: {
+                email: '12345678@qq.com',
+                password: '12345678'
+            },
+            userDetail:{}
         };
     }
 
     handleClick() {
         this.setState({
-            isShow: true
+            isShow: true,
         })
         console.log(this.state.isShow)
+    }
+
+    ClickToServe() {
+        axios.post('http://localhost:3003/login', this.state.userDate).then(res => {
+            console.log(res)
+            console.log(this.state.userDate)
+
+            if (res.data.code == 200) {
+                let dataMsg = res.data.userDate
+                this.setState({
+                    isShow: false,
+                    userDetail:dataMsg
+                })
+            } else {
+                alert('登陆失败')
+                this.setState({
+                    isShow: false
+                })
+            }
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
     render() {
@@ -29,7 +58,10 @@ export default class Admin extends Component {
                         <NavLeft/>
                     </Layout.Col>
                     <Layout.Col span="20">
-                        <Header handleClick={this.handleClick.bind(this)}/>
+                        <Header
+                            handleClick={this.handleClick.bind(this)}
+                            userDetail={this.state.userDetail}
+                        />
                         <div className='content-wrap'>
                             <div className="content">
                                 {this.props.children}
@@ -49,16 +81,18 @@ export default class Admin extends Component {
                         <Dialog.Body>
                             <div className='inputTo'>
                                 <span className='inputMsg'>邮 箱:</span>
-                                <Input placeholder="请输入邮箱" className='setWidth'/>
+                                <Input placeholder="请输入邮箱" className='setWidth'
+                                />
                             </div>
                             <div className='inputTo'>
                                 <span className='inputMsg'>密码:</span><
-                                Input placeholder="请输入密码" type='password' className='setWidth'/>
+                                Input placeholder="请输入密码" type='password' className='setWidth'
+                            />
                             </div>
                         </Dialog.Body>
                         <Dialog.Footer className="dialog-footer">
                             <Button onClick={() => this.setState({isShow: false})}>取消</Button>
-                            <Button type="primary" onClick={() => this.setState({isShow: false})}>登陆</Button>
+                            <Button type="primary" onClick={this.ClickToServe.bind(this)}>登陆</Button>
                         </Dialog.Footer>
                     </Dialog>
                 </div>

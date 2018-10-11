@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 
-import {HashRouter, Route, Switch,Redirect} from 'react-router-dom'
+import {HashRouter, Route, Switch, Redirect} from 'react-router-dom'
 
 import Admin from '../views/admin'
 import notMatch from '../views/notMatch'
 import Home from '../views/home'
 import secondPage from '../views/secondPage'
 import Login from '../views/login'
+
+import Barchart from '../views/barchart'
+import Piechart from '../views/piechart'
 
 
 export default class Router extends Component {
@@ -20,16 +23,20 @@ export default class Router extends Component {
             <HashRouter>
                 <div>
                     <Switch>
-                        <Route path='/'  render={()=>
+                        <Route path='/' render={() =>
                             <Admin>
-                                <Route path='/admin/home' component={Home}></Route>
-                                <Route path='/admin/secondPage' component={secondPage}></Route>
-                                <Route path='login' component={Login}></Route>
+                                <Switch>
+                                    <Route path='/admin/home' component={Home}></Route>
+                                    <Route path='/admin/secondPage' component={secondPage}></Route>
+                                    <Route path='/admin/barchart' component={Barchart}></Route>
+                                    <Route path='/admin/piechart' component={Piechart}></Route>
+                                    <Route component={notMatch}></Route>
+                                </Switch>
                             </Admin>
                         }
                         >
                         </Route>
-                        <Route   component={notMatch}></Route>
+                        <Route component={notMatch}></Route>
                     </Switch>
                 </div>
             </HashRouter>

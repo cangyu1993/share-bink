@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 var instance = axios.create({
-    baseURL: 'http://localhost:3003',
-    timeout: 15000,
+    baseURL: 'https://www.easy-mock.com/mock/5bbb8bf854d6771eb592838d',
+    timeout: 150000,
 });
 
 const xhr = {

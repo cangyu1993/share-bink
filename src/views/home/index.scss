@@ -1,9 +1,10 @@
-.home{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 60vh;
-  background:skyblue;
-  font-size: 25px;
-  font-weight: 700;
+.home-view{
+  .totalForm{
+    display: flex;
+    justify-content: space-around;
+  }
+  .twoBtn{
+    margin-top: 20px;
+    margin-left: 55px;
+  }
 }
