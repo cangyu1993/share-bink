@@ -1,4 +1,12 @@
 .home-view{
+   .spinning{
+     position: fixed;
+     z-index: 998;
+     top: 50%;
+     left: 50%;
+     width: 150px;
+     height: 150px;
+   }
   .totalForm{
     display: flex;
     justify-content: space-around;
@@ -6,5 +14,10 @@
   .twoBtn{
     margin-top: 20px;
     margin-left: 55px;
+  }
+  .sortPage{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
   }
 }

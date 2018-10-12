@@ -10,6 +10,7 @@ import Login from '../views/login'
 
 import Barchart from '../views/barchart'
 import Piechart from '../views/piechart'
+import Mapbaidu from '../views/map'
 
 
 export default class Router extends Component {
@@ -23,7 +24,8 @@ export default class Router extends Component {
             <HashRouter>
                 <div>
                     <Switch>
-                        <Route path='/' render={() =>
+                        <Route path='/common/order/detail/:id' component={Mapbaidu}></Route>
+                        <Route path='/'  render={() =>
                             <Admin>
                                 <Switch>
                                     <Route path='/admin/home' component={Home}></Route>
@@ -36,7 +38,9 @@ export default class Router extends Component {
                         }
                         >
                         </Route>
+
                         <Route component={notMatch}></Route>
+
                     </Switch>
                 </div>
             </HashRouter>

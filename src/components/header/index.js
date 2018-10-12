@@ -30,7 +30,7 @@ export default class Header extends Component {
 
     getWeather() {
         axios.get('http://t.weather.sojson.com/api/weather/city/101010100').then(res => {
-            console.log(res)
+            // console.log(res)
             let weatherMsg = res.data.data.forecast[0]
             let minT = weatherMsg.low
             let maxT = weatherMsg.high
@@ -38,7 +38,7 @@ export default class Header extends Component {
             let f1 = weatherMsg.fl
             let type = weatherMsg.type
             let weatherStr = `${minT}~${maxT} ${fx} ${f1} ${type}`
-            console.log(weatherStr)
+            // console.log(weatherStr)
             this.setState({
                 weather: weatherStr
             })
