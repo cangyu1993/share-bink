@@ -32,6 +32,10 @@ export default class NavLeft extends Component {
                                 饼状图
                             </Link>
                             </Menu.Item>
+                            <Menu.Item index="1-4"> <Link to='/admin/map' replace className='secondTitle'>
+                                地图测试
+                            </Link>
+                            </Menu.Item>
 
                         </Menu.ItemGroup>
                     </Menu.SubMenu>
