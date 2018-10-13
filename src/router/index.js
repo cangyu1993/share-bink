@@ -12,6 +12,7 @@ import Barchart from '../views/barchart'
 import Piechart from '../views/piechart'
 import Mapbaidu from '../views/map'
 import Text from '../views/newMap'
+import DDDD from '../views/newMap/map'
 
 
 export default class Router extends Component {
@@ -34,6 +35,7 @@ export default class Router extends Component {
                                     <Route path='/admin/barchart' component={Barchart}></Route>
                                     <Route path='/admin/piechart' component={Piechart}></Route>
                                     <Route path='/admin/map' component={Text}></Route>
+                                    <Route path='/admin/map002' component={DDDD}></Route>
                                     <Route component={notMatch}></Route>
                                 </Switch>
                             </Admin>

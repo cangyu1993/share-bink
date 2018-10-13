@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
-import {Map, Marker, NavigationControl,
-    simpleMapStyle,MapTypeControl,ScaleControl,OverviewMapControl,Arc,icon
+import {
+    Map, Marker, NavigationControl,
+    simpleMapStyle, MapTypeControl, ScaleControl, OverviewMapControl, Arc, icon
 } from 'react-bmap'
+
+import axios from '../../until/axios'
+
 
 class Text extends Component {
     constructor(props) {
@@ -10,15 +14,23 @@ class Text extends Component {
 
     state = {};
 
+
+    componentWillMount() {
+
+    }
+
+
     render() {
+        const BMap = window.BMap
         return (
             <div>
                 <Map
-                    style={{height: '400px'}} mapStyle={simpleMapStyle} center={{lng: 105.403119, lat: 38.328658}} zoom='13'>
+                    style={{height: '400px'}} mapStyle={simpleMapStyle} center={{lng: 105.403119, lat: 38.328658}}
+                    zoom='13'>
                     <NavigationControl/>
-                    <MapTypeControl />
-                    <ScaleControl />
-                    <OverviewMapControl />
+                    <MapTypeControl/>
+                    <ScaleControl/>
+                    <OverviewMapControl/>
                     <Arc enableAnimation={true}
                          showFromPoint={false}
                          showToPoint={true}
@@ -33,6 +45,7 @@ class Text extends Component {
                                  }
                              },
                              {
+                                 color: 'skyblue',
                                  from: {
                                      city: '北京',
                                  },
@@ -45,6 +58,7 @@ class Text extends Component {
                                  }
                              },
                              {
+                                 color: 'pink',
                                  from: {
                                      city: '北京'
                                  },
@@ -60,8 +74,8 @@ class Text extends Component {
                                      city: '广州'
                                  }
                              }
-                         ]} />
-                    <Marker icon="start" position='center' />
+                         ]}/>
+                    <Marker icon="start" position='center'/>
                 </Map>
                 <div style={{height:"36px"}}></div>
             </div>

@@ -4,7 +4,9 @@ import Header from '../../components/header'
 import {Card, Icon,Spin} from 'antd'
 
 import {Map, Marker, NavigationControl,Polyline,
-    Polygon,simpleMapStyle,MapTypeControl,ScaleControl,OverviewMapControl
+    Polygon,simpleMapStyle,
+    MapTypeControl,ScaleControl,
+    OverviewMapControl,enableScrollWheelZoom
 } from 'react-bmap'
 import './index.scss'
 
@@ -27,7 +29,7 @@ class Mapbaidu extends Component {
             spinning:true
         })
         const id = this.props.match.params.id
-        axios.get('/order/detail', {id: id}).then(res => {
+        axios.get(`/order/detail/?id=${id}`).then(res => {
             this.setState({
                 spinning:false
             })
@@ -63,7 +65,7 @@ class Mapbaidu extends Component {
             <div>
                 <Header/>
                 <div>
-                    <Map center={this.state.centerPlace} zoom="11">
+                    <Map center={this.state.centerPlace}  zoom="11" enableScrollWheelZoom="true">
                         <Marker position={this.state.centerPlace}
                                 icon="start"
                                 title="起点"
@@ -80,6 +82,7 @@ class Mapbaidu extends Component {
                             strokeColor='red'
                             path={
                                 this.state.position_list.map((item, index) => {
+                                    item.key = index
                                     return {lng: item.lon, lat: item.lat}
                                 })
                             }
@@ -89,6 +92,7 @@ class Mapbaidu extends Component {
                             strokeColor='yellow'
                             path={
                                 this.state.area.map((item, index) => {
+                                    item.key = index
                                     return {lng: item.lon, lat: item.lat}
                                 })}
                         />
