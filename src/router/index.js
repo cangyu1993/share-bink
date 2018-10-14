@@ -13,6 +13,7 @@ import Piechart from '../views/piechart'
 import Mapbaidu from '../views/map'
 import Text from '../views/newMap'
 import DDDD from '../views/newMap/map'
+import goodleMap from '../views/goodleMap'
 
 
 export default class Router extends Component {
@@ -36,6 +37,7 @@ export default class Router extends Component {
                                     <Route path='/admin/piechart' component={Piechart}></Route>
                                     <Route path='/admin/map' component={Text}></Route>
                                     <Route path='/admin/map002' component={DDDD}></Route>
+                                    {/*<Route path='/admin/map003' component={goodleMap}></Route>*/}
                                     <Route component={notMatch}></Route>
                                 </Switch>
                             </Admin>

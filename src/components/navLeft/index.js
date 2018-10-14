@@ -8,13 +8,20 @@ export default class NavLeft extends Component {
         super(props)
         this.state = {};
     }
-
+    changeLog=(index,indexPath,title)=>{
+        // console.log('1',index)
+        // console.log('2', indexPath)
+        // console.log('3',title)
+        const text = title.props.children[1].props.children
+        console.log('text',text)
+    }
     render() {
         return (
             <div className='nav-left'>
 
                 <Menu defaultActive="2" className="el-menu-vertical-demo"
                       theme='dark'
+                      onSelect={this.changeLog}
                 >
                     <Menu.SubMenu index="1" title={<span><i className="el-icon-menu"></i>导航一</span>}>
                         <Menu.ItemGroup title="分组一">
@@ -41,6 +48,15 @@ export default class NavLeft extends Component {
                                 地图测试
                             </Link>
                             </Menu.Item>
+                            <Menu.Item index="1-5"> <Link to='/admin/map004' replace className='secondTitle'>
+                               高德地图
+                            </Link>
+                            </Menu.Item>
+
+                            {/*<Menu.Item index="1-6"> <Link to='/admin/map003' replace className='secondTitle'>*/}
+                                {/*谷歌地图*/}
+                            {/*</Link>*/}
+                            {/*</Menu.Item>*/}
 
                         </Menu.ItemGroup>
                     </Menu.SubMenu>
