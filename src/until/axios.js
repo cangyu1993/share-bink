@@ -25,7 +25,7 @@ const xhr = {
         })
     },
     post(url, data, config){
-        return fetch(url, data,config,'post')
+        return this.fetch(url, data,config,'post')
     }
 }
 
