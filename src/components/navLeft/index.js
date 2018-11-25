@@ -3,22 +3,33 @@ import {Link} from 'react-router-dom'
 import {Menu} from "element-react";
 import './index.scss'
 
-export default class NavLeft extends Component {
+import {connect} from 'react-redux'
+
+import actionCreators from '../../redux/action'
+import {bindActionCreators} from 'redux'
+
+class NavLeft extends Component {
     constructor(props) {
         super(props)
         this.state = {};
+    }
+    state={
+        menuItemTitle:''
     }
     changeLog=(index,indexPath,title)=>{
         // console.log('1',index)
         // console.log('2', indexPath)
         // console.log('3',title)
         const text = title.props.children[1].props.children
-        console.log('text',text)
+        // console.log(text)
+        this.setState({
+            menuItemTitle:text
+        })
+        this.props.action.changeMenuItem(text)
     }
     render() {
         return (
             <div className='nav-left'>
-
                 <Menu defaultActive="2" className="el-menu-vertical-demo"
                       theme='dark'
                       onSelect={this.changeLog}
@@ -70,8 +81,14 @@ export default class NavLeft extends Component {
                         </Menu.ItemGroup>
                     </Menu.SubMenu>
                 </Menu>
-
             </div>
         )
     }
 }
+
+export default connect(
+    null,
+    (dispath)=>({
+      action:bindActionCreators(actionCreators,dispath)
+    })
+)(NavLeft)

@@ -126,7 +126,7 @@ class Home extends Component {
     }
     //获得订单详情
     orderDetail = () => {
-        console.log(this.state.selectedRows)
+        // console.log(this.state.selectedRows)
         if (this.state.selectedRows.id) {
             const dataMsg = this.state.selectedRows
             const id = this.state.selectedRows.id
@@ -143,7 +143,7 @@ class Home extends Component {
                             </div>
                         ),
                         onOk(){
-                            window.open(`/#/common/order/detail/${id}`, '_blank')
+                            window.open(`/common/order/detail/${id}`, '_blank')
                         },
                     });
         } else {
@@ -266,7 +266,7 @@ class Home extends Component {
         const rowSelection = {
             type: 'radio',
             onChange: (selectedRowKeys, selectedRows) => {
-                console.log('selectedRowKeys=>',selectedRowKeys)
+                // console.log('selectedRowKeys=>',selectedRowKeys)
                 // console.log('selectedRows=>',selectedRows)
                 this.setState({
                     selectedRows: selectedRows[0],

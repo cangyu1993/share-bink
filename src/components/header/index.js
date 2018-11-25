@@ -6,9 +6,11 @@ import {Icon} from 'antd';
 import until from '../../until'
 import axios from 'axios'
 
+import {connect} from 'react-redux'
+
 const formdate = until.formatDate
 
-export default class Header extends Component {
+class Header extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -73,7 +75,9 @@ export default class Header extends Component {
                 <div className='weather-wrap'>
                     <div className="breadcrumb">
                         <Breadcrumb separator="/">
-                            <Breadcrumb.Item className="breadcrumb-item">首页</Breadcrumb.Item>
+                            <Breadcrumb.Item className="breadcrumb-item">
+                                {this.props.menuText}
+                            </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
                     <div className="weather">
@@ -87,3 +91,9 @@ export default class Header extends Component {
         )
     }
 }
+
+export default connect(
+    (state)=>({
+      menuText:state.menuItemState
+    })
+)(Header)
