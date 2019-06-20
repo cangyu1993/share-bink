@@ -28,7 +28,7 @@ export default class Router extends Component {
                    <Route path='/admin'  render={() =>
                        <Admin>
                            <Switch>
-                               <Route path='/admin/home'  component={Home}></Route>
+                               <Route path='/admin/home/:id'  component={Home} ></Route>
                                <Route path='/admin/secondPage' component={secondPage}></Route>
                                <Route path='/admin/barchart' component={Barchart}></Route>
                                <Route path='/admin/piechart' component={Piechart}></Route>

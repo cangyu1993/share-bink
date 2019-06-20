@@ -48,6 +48,7 @@
     "react-app-polyfill": "^0.1.3",
     "react-bmap": "^1.0.84",
     "react-dev-utils": "^6.0.4",
+    "react-document-title": "^2.0.3",
     "react-dom": "^16.5.2",
     "react-google-maps": "^9.4.5",
     "react-redux": "^5.0.7",
@@ -119,7 +120,7 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.9.1",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0"
   }
 }

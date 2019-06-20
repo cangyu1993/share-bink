@@ -31,8 +31,9 @@ class Header extends Component {
     }
 
     getWeather() {
+        axios.defaults.responseType='json'
         axios.get('http://t.weather.sojson.com/api/weather/city/101010100').then(res => {
-            // console.log(res)
+            console.log(res)
             let weatherMsg = res.data.data.forecast[0]
             let minT = weatherMsg.low
             let maxT = weatherMsg.high

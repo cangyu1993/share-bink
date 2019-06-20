@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from '../../until/axios'
 import './index.scss'
+import DocumentTitle from 'react-document-title'
 
 import {
     Card, Button, Form,
@@ -82,13 +83,14 @@ class Home extends Component {
         }).catch(err => {
             console.log(err)
             this.setState({
-                spinning: true
+                spinning: false
             })
         })
     }
 
     componentWillMount() {
         this.getData()
+        console.log(this.props.match.params)
     }
 
     componentDidMount() {
@@ -276,87 +278,89 @@ class Home extends Component {
         }
 
         return (
-            <div className='home-view'>
-                <div className='spinning'>
-                    <Spin indicator={antIcon}
-                          spinning={this.state.spinning}
-                    />
+            <DocumentTitle title='列表页'>
+                <div className='home-view'>
+                    <div className='spinning'>
+                        <Spin indicator={antIcon}
+                              spinning={this.state.spinning}
+                        />
+                    </div>
+                    <Card>
+                        <Form layout="inline" className='totalForm'>
+                            <FormItem
+                                label="城市"
+                            >
+                                {
+                                    getFieldDecorator('city', {
+                                        initialValue: '请选择城市'
+                                    })(
+                                        <Select style={{width: 160}}>
+                                            {this.cityOptions.map((item, index) => {
+                                                return <Option value={item.label} key={index}>{item.label}</Option>
+                                            })}
+                                        </Select>
+                                    )
+                                }
+                            </FormItem>
+
+                            <FormItem
+                                label="订单时间"
+                            >
+                                {
+                                    getFieldDecorator('searchTime', rangeConfig)(
+                                        <RangePicker/>
+                                    )
+                                }
+                            </FormItem>
+
+                            <FormItem
+                                label="订单状态"
+                            >
+                                {
+                                    getFieldDecorator('status', {
+                                        initialValue: '请选择状态'
+                                    })(
+                                        <Select style={{width: 160}}>
+                                            {this.orderForm.map((item, index) => {
+                                                return <Option value={item.label} key={index}>{item.label}</Option>
+                                            })}
+                                        </Select>
+                                    )
+                                }
+                            </FormItem>
+                        </Form>
+
+                        <div className='twoBtn'>
+                            <Button type='primary' onClick={this.inquireData}>查询</Button>
+                            <Button style={{marginLeft: "10px"}} onClick={this.resetData}>重置</Button>
+                        </div>
+                    </Card>
+                    <Card>
+                        <div style={{marginLeft: "50px"}}>
+                            <Button type='primary' style={{width: '130px'}} onClick={this.orderDetail}>订单详情</Button>
+                            <Button type='danger' style={{marginLeft: "10px", width: '130px'}} onClick={this.endOrder}>结束订单</Button>
+                        </div>
+                    </Card>
+                    <Card>
+                        <div className='Table'>
+                            <Table columns={tableColumns}
+                                   dataSource={this.state.orderList}
+                                   pagination={false}
+                                   fixed={true}
+                                   rowSelection={rowSelection}
+                            />
+                        </div>
+                        <div className='sortPage'>
+                            <Pagination defaultCurrent={1}
+                                        total={this.state.pageNums}
+                                        pageSize={10}
+                                        onChange={this.changePageNum}
+                                        hideOnSinglePage={true}
+                            />
+                        </div>
+                    </Card>
                 </div>
-                <Card>
-                    <Form layout="inline" className='totalForm'>
-                        <FormItem
-                            label="城市"
-                        >
-                            {
-                                getFieldDecorator('city', {
-                                    initialValue: '请选择城市'
-                                })(
-                                    <Select style={{width: 160}}>
-                                        {this.cityOptions.map((item, index) => {
-                                            return <Option value={item.label} key={index}>{item.label}</Option>
-                                        })}
-                                    </Select>
-                                )
-                            }
-                        </FormItem>
-
-                        <FormItem
-                            label="订单时间"
-                        >
-                            {
-                                getFieldDecorator('searchTime', rangeConfig)(
-                                    <RangePicker/>
-                                )
-                            }
-                        </FormItem>
-
-                        <FormItem
-                            label="订单状态"
-                        >
-                            {
-                                getFieldDecorator('status', {
-                                    initialValue: '请选择状态'
-                                })(
-                                    <Select style={{width: 160}}>
-                                        {this.orderForm.map((item, index) => {
-                                            return <Option value={item.label} key={index}>{item.label}</Option>
-                                        })}
-                                    </Select>
-                                )
-                            }
-                        </FormItem>
-                    </Form>
-
-                    <div className='twoBtn'>
-                        <Button type='primary' onClick={this.inquireData}>查询</Button>
-                        <Button style={{marginLeft: "10px"}} onClick={this.resetData}>重置</Button>
-                    </div>
-                </Card>
-                <Card>
-                    <div style={{marginLeft: "50px"}}>
-                        <Button type='primary' style={{width: '130px'}} onClick={this.orderDetail}>订单详情</Button>
-                        <Button type='danger' style={{marginLeft: "10px", width: '130px'}} onClick={this.endOrder}>结束订单</Button>
-                    </div>
-                </Card>
-                <Card>
-                    <div className='Table'>
-                        <Table columns={tableColumns}
-                               dataSource={this.state.orderList}
-                               pagination={false}
-                               fixed={true}
-                               rowSelection={rowSelection}
-                        />
-                    </div>
-                    <div className='sortPage'>
-                        <Pagination defaultCurrent={1}
-                                    total={this.state.pageNums}
-                                    pageSize={10}
-                                    onChange={this.changePageNum}
-                                    hideOnSinglePage={true}
-                        />
-                    </div>
-                </Card>
-            </div>
+            </DocumentTitle>
         )
     }
 }
